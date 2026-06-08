@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../services/supabase/supabase";
 import { useAuth } from "../../context/authcontext/authcontext";
-import {
-  PaystackButton,
-} from "react-paystack";
 
 
 import "./upgrade.css";
@@ -15,22 +12,7 @@ export function UpgradePage() {
 
  const { user } = useAuth();
 
-const paystackConfig = {
 
-  reference:
-    new Date().getTime()
-    .toString(),
-
-  email:
-    user?.email,
-
-  amount:
-    2000 * 100,
-
-  publicKey:
-    "pk_test_d360f0e0deb5d9aa2654ba3e5405b440def855c7",
-
-};
 
  
 
@@ -68,50 +50,34 @@ const paystackConfig = {
 
 
 
-  async function onSuccess(
-  reference
-) {
+async function onSuccess(reference) {
+  if (!reference || !user?.id) {
+    console.error("Missing reference or user");
+    return;
+  }
 
   try {
+    const response = await fetch(`${API}/api/verify-payment`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        reference,
+        userId: user.id,
+      }),
+    });
 
-    const response =
-      await fetch(
+    const data = await response.json();
 
-       `${API}/api/verify-payment`,
-
-        {
-          method: "POST",
-
-          headers: {
-            "Content-Type":
-              "application/json",
-          },
-
-          body: JSON.stringify({
-
-            reference:
-              reference.reference,
-
-            userId:
-              user.id,
-          }),
-        }
-      );
-
-    const data =
-      await response.json();
-
-    if (data.success) {
-
-      alert(
-        "Welcome to Pro 🎉"
-      );
-
+    if (response.ok && data.success) {
+      alert("Welcome to Pro 🎉");
       window.location.reload();
+    } else {
+      alert(`Payment failed: ${data.message}`);
     }
 
   } catch (error) {
-
     console.log(error);
   }
 }
@@ -122,6 +88,31 @@ const paystackConfig = {
       "Paystack integration coming next step."
     );
   }
+
+
+function handlePaystackPayment() {
+  if (!user?.email) {
+    alert("User not loaded");
+    return;
+  }
+
+  const handler = window.PaystackPop.setup({
+    key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
+    email: user.email,
+    amount: 2000 * 100,
+    currency: "NGN",
+
+    callback: function (response) {
+     onSuccess(response.reference);
+    },
+
+    onClose: function () {
+      console.log("Payment closed");
+    },
+  });
+
+  handler.openIframe();
+}
 
   return (
 
@@ -274,22 +265,12 @@ const paystackConfig = {
 
 </ul>
 
-          <PaystackButton
-
-  {...paystackConfig}
-
-  text="Upgrade Now"
-
-  onSuccess={onSuccess}
-
-  onClose={() =>
-    console.log(
-      "Payment closed"
-    )
-  }
-
+      <button
   className="upgrade-pay-btn"
-/>
+  onClick={handlePaystackPayment}
+>
+  Upgrade Now
+</button>
 
           </div>
 

@@ -96,25 +96,23 @@ export function LoginPage() {
         )
 
         .maybeSingle();
+        
+const role = profile?.role;
 
-      if (!profile?.role) {
+if (!role) {
+  navigate("/select-role", {
+    state: { userId: data.user.id },
+    replace: true,
+  });
+  return;
+}
 
-        navigate("/select-role");
+if (role === "teacher") {
+  navigate("/teacher-dashboard", { replace: true });
+  return;
+}
 
-      } else if (
-        profile.role === "teacher"
-      ) {
-
-        navigate(
-          "/teacher-dashboard"
-        );
-
-      } else {
-
-        navigate(
-          "/student-dashboard"
-        );
-      }
+navigate("/student-dashboard", { replace: true });
     }
 
     setLoading(false);

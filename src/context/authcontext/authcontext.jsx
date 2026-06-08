@@ -147,8 +147,7 @@ export function AuthProvider({
                 currentUser.email
                   ?.split("@")[0],
 
-              role:
-                "student",
+             role: null,
             })
 
             .select()
