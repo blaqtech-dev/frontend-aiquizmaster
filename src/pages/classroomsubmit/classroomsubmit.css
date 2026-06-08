@@ -1,0 +1,281 @@
+/* =========================
+   PAGE WRAPPER
+========================= */
+
+.teacher-submissions-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #0f172a; /* deep modern navy */
+  color: #e2e8f0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.teacher-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px 25px;
+  background: #111c33;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+}
+
+.teacher-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  color: #f8fafc;
+}
+
+.teacher-header span {
+  font-size: 14px;
+  color: #94a3b8;
+  background: rgba(59, 130, 246, 0.15);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* =========================
+   LOADING STATE
+========================= */
+
+.submissions-loading {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #94a3b8;
+  background: #0f172a;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-submissions {
+  text-align: center;
+  margin-top: 80px;
+  padding: 40px;
+  background: #111c33;
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.empty-submissions h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #f1f5f9;
+}
+
+.empty-submissions p {
+  color: #94a3b8;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.submission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* =========================
+   SUBMISSION CARD
+========================= */
+
+.submission-card {
+  background: #111c33;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 18px;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submission-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* subtle glow effect */
+.submission-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.15),
+    transparent 70%
+  );
+  transform: rotate(25deg);
+}
+
+/* =========================
+   STUDENT HEADER
+========================= */
+
+.student-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.student-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(59, 130, 246, 0.5);
+}
+
+.student-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #f8fafc;
+}
+
+.student-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* =========================
+   SUBMISSION BODY
+========================= */
+
+.submission-body {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.submission-body h4 {
+  font-size: 13px;
+  color: #60a5fa;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submission-body p {
+  font-size: 14px;
+  color: #e2e8f0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* =========================
+   FILE LINK
+========================= */
+
+.file-link {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #38bdf8;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  transition: 0.2s ease;
+}
+
+.file-link:hover {
+  background: rgba(56, 189, 248, 0.2);
+  transform: scale(1.03);
+}
+
+/* =========================
+   META INFO
+========================= */
+
+.submission-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* =========================
+   GRADE AREA
+========================= */
+
+.grade-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.grade-area div {
+  font-size: 14px;
+  color: #e2e8f0;
+}
+
+/* =========================
+   GRADE BUTTON
+========================= */
+
+.grade-btn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.grade-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .teacher-submissions-page {
+    padding: 20px;
+  }
+
+  .teacher-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .submission-meta {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .grade-area {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

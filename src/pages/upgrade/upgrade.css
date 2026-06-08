@@ -1,0 +1,203 @@
+.upgrade-page{
+  min-height:100vh;
+  background:#020617;
+  color:white;
+  padding:60px 20px;
+}
+
+.upgrade-container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.upgrade-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.upgrade-header h1{
+  font-size:52px;
+  margin-bottom:15px;
+}
+
+.upgrade-header p{
+  max-width:700px;
+  margin:auto;
+  color:#94a3b8;
+}
+
+.current-plan-card{
+  background:#111827;
+  border:1px solid #1f2937;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.current-plan-card span{
+  color:#94a3b8;
+}
+
+.current-plan-card h2{
+  margin-top:10px;
+  font-size:40px;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(350px,1fr));
+  gap:30px;
+}
+
+.pricing-card{
+  background:#111827;
+  border:1px solid #1f2937;
+  border-radius:24px;
+  padding:40px;
+  position:relative;
+}
+
+.pricing-card h2{
+  margin-bottom:10px;
+}
+
+.pricing-card h1{
+  font-size:50px;
+  margin-bottom:10px;
+}
+
+.pricing-card span{
+  color:#94a3b8;
+}
+
+.pricing-card ul{
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.pricing-card li{
+  list-style:none;
+  color:#e2e8f0;
+}
+
+
+.upgrade-pay-btn{
+
+  width:100%;
+
+  height:55px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:#6366f1;
+
+  color:white;
+
+  font-size:16px;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+.pricing-card button{
+  width:100%;
+  height:55px;
+  margin-top:30px;
+  border:none;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.free button{
+  background:#334155;
+  color:white;
+}
+
+.pro{
+  border:2px solid #6366f1;
+}
+
+.pro button{
+  background:#6366f1;
+  color:white;
+}
+
+.pro-badge{
+  position:absolute;
+  top:-12px;
+  right:20px;
+  background:#6366f1;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+}
+
+
+/* ================= BENEFITS ================= */
+
+.premium-benefits{
+  margin-top:80px;
+}
+
+.premium-benefits h2{
+  text-align:center;
+  font-size:36px;
+  margin-bottom:40px;
+}
+
+.benefits-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.benefit-card{
+  background:white;
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+  transition:0.3s;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.benefit-card:hover{
+  transform:translateY(-6px);
+}
+
+.benefit-card span{
+  font-size:40px;
+  display:block;
+  margin-bottom:15px;
+}
+
+.benefit-card h3{
+  margin-bottom:12px;
+  font-size:22px;
+}
+
+.benefit-card p{
+  color:#666;
+  line-height:1.7;
+}
+@media(max-width:750px){
+    
+.upgrade-header h1{
+  font-size:30px;
+  margin-bottom:15px;
+}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(200px,1fr));
+  gap:30px;
+}
+}

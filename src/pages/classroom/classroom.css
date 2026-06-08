@@ -1,0 +1,666 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ================= RESET ================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"Inter",sans-serif;
+  background:#020617;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+}
+
+button,
+input,
+textarea{
+  font-family:"Inter",sans-serif;
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-track{
+  background:#0f172a;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#6366f1;
+  border-radius:999px;
+}
+
+/* ================= PAGE ================= */
+
+.classroom-page{
+  min-height:100vh;
+
+  padding:70px 6% 100px;
+
+  color:#ffffff;
+
+  background:
+  radial-gradient(
+    circle at top left,
+    rgba(99,102,241,.22),
+    transparent 28%
+  ),
+
+  radial-gradient(
+    circle at bottom right,
+    rgba(168,85,247,.18),
+    transparent 30%
+  ),
+
+  linear-gradient(
+    180deg,
+    #0f172a 0%,
+    #020617 100%
+  );
+
+  position:relative;
+}
+
+/* ================= LOADING ================= */
+
+.classroom-loading{
+  min-height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+
+  gap:20px;
+
+  background:#020617;
+}
+
+.classroom-loading h2{
+  color:#e2e8f0;
+  font-size:24px;
+  font-weight:700;
+}
+
+.classroom-loader{
+  width:75px;
+  height:75px;
+
+  border-radius:50%;
+
+  border:5px solid #334155;
+  border-top:5px solid #6366f1;
+
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* ================= HERO ================= */
+
+.classroom-hero{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+
+  gap:40px;
+
+  align-items:start;
+
+  margin-bottom:80px;
+}
+
+/* ================= LEFT HERO ================= */
+
+.classroom-hero-left{
+  width:100%;
+}
+
+.classroom-badge{
+  width:max-content;
+
+  padding:12px 20px;
+
+  border-radius:999px;
+
+  background:rgba(99,102,241,.14);
+
+  border:1px solid rgba(129,140,248,.28);
+
+  color:#c7d2fe;
+
+  font-size:13px;
+  font-weight:700;
+
+  letter-spacing:.5px;
+
+  margin-bottom:28px;
+}
+
+.classroom-hero-left h1{
+  font-size:68px;
+
+  line-height:1.05;
+
+  letter-spacing:-2px;
+
+  margin-bottom:24px;
+
+  color:#ffffff;
+}
+
+.classroom-hero-left p{
+  font-size:18px;
+
+  line-height:1.9;
+
+  color:#cbd5e1;
+
+  max-width:760px;
+
+  margin-bottom:42px;
+}
+
+/* ================= META CARDS ================= */
+
+.classroom-meta{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:22px;
+}
+
+.meta-card{
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:28px;
+
+  padding:30px;
+
+  backdrop-filter:blur(12px);
+
+  transition:.3s ease;
+}
+
+.meta-card:hover{
+  transform:translateY(-6px);
+
+  border-color:rgba(129,140,248,.35);
+
+  box-shadow:
+  0 15px 40px rgba(0,0,0,.25);
+}
+
+.meta-card h3{
+  font-size:42px;
+
+  font-weight:800;
+
+  margin-bottom:12px;
+
+  color:#ffffff;
+}
+
+.meta-card span{
+  color:#cbd5e1;
+
+  font-size:15px;
+
+  line-height:1.6;
+}
+
+/* ================= RIGHT SIDE ================= */
+
+.classroom-hero-right{
+  width:100%;
+}
+
+.classroom-side-card{
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:32px;
+
+  padding:36px;
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:
+  0 10px 40px rgba(0,0,0,.25);
+}
+
+.classroom-side-card h2{
+  font-size:32px;
+
+  margin-bottom:30px;
+
+  color:#ffffff;
+}
+
+/* ================= TOOL CARDS ================= */
+
+.side-tools{
+  display:flex;
+  flex-direction:column;
+
+  gap:20px;
+}
+
+.tool-card{
+  display:flex;
+  align-items:flex-start;
+
+  gap:18px;
+
+  padding:22px;
+
+  border-radius:24px;
+
+  background:rgba(255,255,255,.04);
+
+  border:1px solid rgba(255,255,255,.05);
+
+  transition:.3s ease;
+
+  color:white;
+}
+
+.tool-card:hover{
+  transform:translateY(-5px);
+
+  border-color:#6366f1;
+
+  background:rgba(99,102,241,.08);
+}
+
+.tool-icon{
+  width:68px;
+  height:68px;
+
+  min-width:68px;
+
+  border-radius:20px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:30px;
+
+  background:linear-gradient(
+    135deg,
+    rgba(99,102,241,.28),
+    rgba(139,92,246,.22)
+  );
+}
+
+.tool-card h3{
+  font-size:21px;
+
+  margin-bottom:8px;
+
+  color:#ffffff;
+}
+
+.tool-card p{
+  color:#cbd5e1;
+
+  line-height:1.7;
+
+  font-size:14px;
+}
+
+/* ================= SECTION ================= */
+
+.classroom-section{
+  width:100%;
+}
+
+.section-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:20px;
+
+  margin-bottom:32px;
+}
+
+.section-mini-title{
+  display:inline-block;
+
+  font-size:13px;
+
+  font-weight:700;
+
+  letter-spacing:.5px;
+
+  color:#818cf8;
+
+  margin-bottom:12px;
+}
+
+.section-top h2{
+  font-size:42px;
+
+  font-weight:800;
+
+  letter-spacing:-1px;
+
+  color:#ffffff;
+}
+
+/* ================= ASSIGNMENTS GRID ================= */
+
+.assignments-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:26px;
+}
+
+/* ================= ASSIGNMENT CARD ================= */
+
+.assignment-card{
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:30px;
+
+  padding:30px;
+
+  backdrop-filter:blur(12px);
+
+  transition:.3s ease;
+
+  display:flex;
+  flex-direction:column;
+
+  min-height:100%;
+}
+
+.assignment-card:hover{
+  transform:translateY(-7px);
+
+  border-color:#6366f1;
+
+  box-shadow:
+  0 18px 45px rgba(0,0,0,.28);
+}
+
+.assignment-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:20px;
+
+  margin-bottom:26px;
+}
+
+.assignment-icon{
+  width:72px;
+  height:72px;
+
+  border-radius:22px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:32px;
+
+  background:linear-gradient(
+    135deg,
+    rgba(99,102,241,.26),
+    rgba(139,92,246,.22)
+  );
+}
+
+.assignment-status{
+  padding:10px 16px;
+
+  border-radius:999px;
+
+  background:rgba(34,197,94,.14);
+
+  border:1px solid rgba(34,197,94,.25);
+
+  color:#bbf7d0;
+
+  font-size:12px;
+  font-weight:700;
+
+  letter-spacing:.4px;
+}
+
+.assignment-card h3{
+  font-size:26px;
+
+  line-height:1.4;
+
+  margin-bottom:18px;
+
+  color:#ffffff;
+}
+
+.assignment-card p{
+  color:#cbd5e1;
+
+  line-height:1.9;
+
+  margin-bottom:30px;
+
+  flex:1;
+}
+
+.assignment-footer{
+  border-top:1px solid rgba(255,255,255,.08);
+
+  padding-top:22px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:8px;
+}
+
+.assignment-footer span{
+  font-size:13px;
+
+  color:#94a3b8;
+}
+
+.assignment-footer strong{
+  color:#ffffff;
+
+  line-height:1.6;
+
+  font-size:15px;
+}
+
+/* ================= EMPTY STATE ================= */
+
+.empty-assignments{
+  background:rgba(255,255,255,.05);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  border-radius:30px;
+
+  padding:90px 30px;
+
+  text-align:center;
+
+  backdrop-filter:blur(12px);
+}
+
+.empty-icon{
+  font-size:80px;
+
+  margin-bottom:24px;
+}
+
+.empty-assignments h3{
+  font-size:36px;
+
+  margin-bottom:18px;
+
+  color:#ffffff;
+}
+
+.empty-assignments p{
+  color:#cbd5e1;
+
+  max-width:550px;
+
+  margin:auto;
+
+  line-height:1.9;
+
+  font-size:16px;
+}
+
+.assignment-file-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #7c5cff;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.assignment-file-btn:hover {
+  background: #5a3fff;
+  transform: translateY(-2px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1300px){
+
+  .classroom-hero{
+    grid-template-columns:1fr;
+  }
+
+  .assignments-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:1000px){
+
+  .classroom-meta{
+    grid-template-columns:1fr;
+  }
+
+  .classroom-hero-left h1{
+    font-size:54px;
+  }
+
+}
+
+@media(max-width:850px){
+
+  .assignments-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-top h2{
+    font-size:34px;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .classroom-page{
+    padding:50px 5% 90px;
+  }
+
+  .classroom-hero{
+    gap:30px;
+  }
+
+  .classroom-hero-left h1{
+    font-size:42px;
+  }
+
+  .classroom-hero-left p{
+    font-size:16px;
+  }
+
+  .classroom-side-card{
+    padding:28px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .classroom-page{
+    padding:40px 5% 80px;
+  }
+
+  .classroom-badge{
+    width:100%;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .classroom-hero-left h1{
+    font-size:32px;
+    line-height:1.2;
+  }
+
+  .section-top h2{
+    font-size:28px;
+  }
+
+  .tool-card{
+    flex-direction:column;
+  }
+
+  .assignment-card{
+    padding:24px;
+  }
+
+  .meta-card{
+    padding:24px;
+  }
+
+  .classroom-side-card{
+    padding:24px;
+  }
+
+  .assignment-icon{
+    width:64px;
+    height:64px;
+    font-size:28px;
+  }
+
+}

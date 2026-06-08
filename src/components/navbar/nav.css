@@ -1,0 +1,590 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:"Inter",sans-serif;
+
+  overflow-x: hidden;
+
+}
+
+/* ================= NAV WRAPPER ================= */
+
+.navbar-wrapper{
+  position:sticky;
+  top:0;
+  z-index:9999;
+
+  width:100%;
+
+  backdrop-filter:blur(20px);
+
+  background:rgba(2,6,23,.92);
+
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+
+  max-width:1500px;
+
+  margin:auto;
+
+  padding:14px 28px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:20px;
+}
+
+/* ================= LOGO ================= */
+
+.logo-btn{
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  border:none;
+  background:none;
+
+  cursor:pointer;
+
+  flex-shrink:0;
+
+  color:white;
+}
+
+.logo-btn span{
+
+  font-size:1.25rem;
+  font-weight:800;
+
+  background:linear-gradient(
+    135deg,
+    #818cf8,
+    #a855f7,
+    #22d3ee
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* ================= CENTER NAV ================= */
+
+.navbar {
+  max-width: 1500px;
+  margin: auto;
+  padding: 14px 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  position: relative; /* important for dropdown */
+}
+
+.nav-center::-webkit-scrollbar{
+  display:none;
+}
+
+/* ================= LINKS ================= */
+
+.nav-center a,
+.nav-text-btn{
+
+  border:none;
+  background:none;
+
+  text-decoration:none;
+
+  color:#cbd5e1;
+
+  font-size:14px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  white-space:nowrap;
+
+  padding:10px 14px;
+
+  border-radius:12px;
+
+  transition:all .25s ease;
+}
+
+.nav-center a:hover,
+.nav-text-btn:hover{
+
+  color:white;
+
+  background:rgba(255,255,255,.06);
+}
+
+/* ================= ACTIVE ================= */
+
+.active-link{
+
+  color:white !important;
+
+  background:rgba(99,102,241,.18);
+
+  border:1px solid rgba(99,102,241,.35);
+}
+
+/* ================= UPGRADE BUTTON ================= */
+
+.nav-center a[href="/upgrade"]{
+
+  background:linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  color:white !important;
+
+  font-weight:700;
+}
+
+.nav-center a[href="/upgrade"]:hover{
+
+  transform:translateY(-2px);
+}
+
+/* ================= RIGHT ================= */
+
+.nav-right{
+
+  display:flex;
+  align-items:center;
+
+  gap:14px;
+
+  flex-shrink:0;
+}
+
+/* ================= USER PROFILE ================= */
+
+.user-profile{
+
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+}
+
+.avatar{
+
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  color:white;
+
+  font-weight:800;
+}
+
+.user-meta{
+
+  display:flex;
+  flex-direction:column;
+}
+
+.user-meta h4{
+
+  color:white;
+
+  font-size:13px;
+
+  font-weight:700;
+}
+
+.user-meta span{
+
+  color:#94a3b8;
+
+  font-size:11px;
+}
+
+/* ================= PLAN BADGES ================= */
+
+.plan-pro{
+
+  margin-top:3px;
+
+  width:fit-content;
+
+  padding:2px 8px;
+
+  border-radius:999px;
+
+  background:rgba(34,197,94,.15);
+
+  color:#22c55e;
+
+  font-size:10px;
+
+  font-weight:700;
+}
+
+.plan-free{
+
+  margin-top:3px;
+
+  width:fit-content;
+
+  padding:2px 8px;
+
+  border-radius:999px;
+
+  background:rgba(245,158,11,.15);
+
+  color:#f59e0b;
+
+  font-size:10px;
+
+  font-weight:700;
+}
+
+/* ================= LOGOUT ================= */
+
+.logout-btn{
+
+  border:none;
+
+  background:linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+
+  color:white;
+
+  padding:11px 16px;
+
+  border-radius:12px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.25s ease;
+}
+
+.logout-btn:hover{
+
+  transform:translateY(-2px);
+}
+
+/* ================= REGISTER ================= */
+
+.register-btn{
+
+  padding:11px 18px;
+
+  border-radius:12px;
+
+  text-decoration:none;
+
+  font-weight:700;
+
+  background:linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  color:white !important;
+}
+
+/* ================= MOBILE MENU BUTTON ================= */
+
+.mobile-menu-btn{
+
+  display:none;
+
+  border:none;
+  background:none;
+
+  color:white;
+
+  cursor:pointer;
+}
+
+
+/* ================= RECENT ACTIVITY ================= */
+
+.activity-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-top:20px;
+}
+
+.activity-card{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+
+  padding:16px;
+  border-radius:16px;
+
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+
+  transition:.3s;
+}
+
+.activity-card:hover{
+  transform:translateX(5px);
+  border-color:rgba(124,77,255,.3);
+}
+
+.activity-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  margin-top:6px;
+}
+
+/* different types */
+
+.activity-card.quiz .activity-dot{
+  background:#7c4dff;
+}
+
+.activity-card.classroom .activity-dot{
+  background:#00bfff;
+}
+
+.activity-card p{
+  color:white;
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.activity-card span{
+  font-size:12px;
+  color:#94a3b8;
+}
+
+
+
+.upgrade-card{
+  margin-top:30px;
+  padding:30px;
+  border-radius:28px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+
+  background:linear-gradient(
+    135deg,
+    rgba(124,77,255,.25),
+    rgba(0,191,255,.15)
+  );
+
+  border:1px solid rgba(255,255,255,.08);
+
+  transition:.3s;
+}
+
+.upgrade-card:hover{
+  transform:translateY(-5px);
+}
+
+.upgrade-left h2{
+  font-size:1.8rem;
+  margin-bottom:10px;
+}
+
+.upgrade-left p{
+  color:#b6c2e0;
+  margin-bottom:15px;
+  line-height:1.6;
+}
+
+.upgrade-left ul{
+  margin:15px 0;
+  padding-left:18px;
+  color:#cbd5e1;
+}
+
+.upgrade-left li{
+  margin-bottom:6px;
+}
+
+.upgrade-btn{
+  padding:12px 20px;
+  border:none;
+  border-radius:14px;
+  background:#7c4dff;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.upgrade-btn:hover{
+  background:#6b3df0;
+  transform:translateY(-3px);
+}
+
+.upgrade-right{
+  font-size:4rem;
+}
+
+.navbar-avatar-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.avatar{
+  width:48px;
+  height:48px;
+
+  border-radius:50%;
+
+  overflow:hidden;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#6366f1;
+
+  color:white;
+  font-weight:700;
+}
+/* ================= TABLET ================= */
+
+@media(max-width:1200px){
+
+  .user-meta{
+    display:none;
+  }
+
+   .nav-center {
+    position: absolute;
+    top: 75px;
+    left: 15px;
+    right: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    background: #020617;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 20px;
+
+    padding: 18px;
+
+    box-shadow: 0 20px 50px rgba(0,0,0,.5);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition: all .3s ease;
+
+    /* 🔥 IMPORTANT FIX */
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+ .mobile-menu-btn{
+    display:flex;
+  }
+  
+  .show-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:950px){
+
+ 
+  
+ 
+  .nav-center a,
+  .nav-text-btn{
+
+    width:100%;
+
+    text-align:left;
+  }
+
+  .nav-right{
+
+    margin-left:auto;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:650px){
+
+  .navbar{
+
+    padding:12px 18px;
+  }
+
+  .logo-btn span{
+    display:none;
+  }
+
+  .avatar{
+
+    width:38px;
+    height:38px;
+  }
+
+  .logout-btn{
+
+    padding:9px 12px;
+
+    font-size:12px;
+  }
+
+  .nav-center{
+
+    top:68px;
+  }
+}

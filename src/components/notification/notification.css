@@ -1,0 +1,553 @@
+/* ================= IMPORT ================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* ================= WRAPPER ================= */
+
+.notification-wrapper{
+  position:relative;
+  display:flex;
+  align-items:center;
+  font-family:"Inter",sans-serif;
+}
+
+/* ================= BUTTON ================= */
+
+.notification-btn{
+  width:48px;
+  height:48px;
+
+  border:none;
+  outline:none;
+
+  border-radius:16px;
+
+  background:rgba(15,23,42,.92);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  color:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  position:relative;
+
+  transition:.25s ease;
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.25);
+}
+
+.notification-btn:hover{
+  transform:translateY(-2px);
+
+  background:#1e293b;
+
+  border-color:rgba(99,102,241,.5);
+}
+
+/* ================= COUNT ================= */
+
+.notification-count{
+  position:absolute;
+
+  top:-5px;
+  right:-5px;
+
+  min-width:22px;
+  height:22px;
+
+  padding:0 6px;
+
+  border-radius:999px;
+
+  background:linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+
+  color:white;
+
+  font-size:11px;
+  font-weight:800;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:2px solid #0f172a;
+
+  box-shadow:
+  0 0 20px rgba(239,68,68,.45);
+
+  animation:pulseBadge 1.5s infinite;
+}
+
+@keyframes pulseBadge{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.08);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+}
+
+/* ================= DROPDOWN ================= */
+
+.notification-dropdown{
+  position:absolute;
+
+  top:62px;
+  right:0;
+
+  width:420px;
+  max-height:640px;
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  background:rgba(2,6,23,.98);
+
+  border:1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(20px);
+
+  box-shadow:
+  0 30px 80px rgba(0,0,0,.55);
+
+  display:flex;
+  flex-direction:column;
+
+  animation:dropdownFade .25s ease;
+  z-index:99999;
+}
+
+@keyframes dropdownFade{
+
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ================= TOP ================= */
+
+.notification-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:22px 22px 18px;
+
+  border-bottom:1px solid rgba(255,255,255,.06);
+
+  background:
+  linear-gradient(
+    135deg,
+    rgba(99,102,241,.12),
+    rgba(168,85,247,.08)
+  );
+}
+
+.notification-top h2{
+  color:white;
+
+  font-size:20px;
+  font-weight:800;
+}
+
+/* ================= SOUND BUTTON ================= */
+
+.sound-toggle-btn{
+  border:none;
+  outline:none;
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  padding:10px 14px;
+
+  border-radius:14px;
+
+  background:#111827;
+
+  color:#cbd5e1;
+
+  font-size:13px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.25s ease;
+}
+
+.sound-toggle-btn:hover{
+  background:#1e293b;
+  color:white;
+}
+
+/* ================= BODY ================= */
+
+.notification-body{
+  overflow-y:auto;
+  max-height:500px;
+
+  padding:10px;
+}
+
+/* ================= SCROLLBAR ================= */
+
+.notification-body::-webkit-scrollbar{
+  width:6px;
+}
+
+.notification-body::-webkit-scrollbar-thumb{
+  background:#334155;
+  border-radius:999px;
+}
+
+/* ================= ITEM ================= */
+
+.notification-item{
+  display:flex;
+  gap:14px;
+
+  padding:16px;
+
+  border-radius:20px;
+
+  margin-bottom:12px;
+
+  background:#0f172a;
+
+  border:1px solid rgba(255,255,255,.05);
+
+  transition:.25s ease;
+}
+
+.notification-item:hover{
+  transform:translateY(-2px);
+
+  background:#111827;
+
+  border-color:rgba(99,102,241,.25);
+}
+
+/* ================= UNREAD ================= */
+
+.unread-notification{
+  border-left:4px solid #6366f1;
+
+  background:
+  linear-gradient(
+    135deg,
+    rgba(99,102,241,.12),
+    rgba(15,23,42,1)
+  );
+}
+
+/* ================= ICON ================= */
+
+.notification-icon{
+  width:52px;
+  height:52px;
+
+  min-width:52px;
+
+  border-radius:18px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+
+  font-size:22px;
+
+  box-shadow:
+  0 12px 25px rgba(99,102,241,.3);
+}
+
+/* ================= CONTENT ================= */
+
+.notification-content{
+  flex:1;
+  cursor:pointer;
+}
+
+.notification-content h4{
+  color:white;
+
+  font-size:15px;
+  font-weight:800;
+
+  margin-bottom:7px;
+
+  line-height:1.4;
+}
+
+.notification-content p{
+  color:#cbd5e1;
+
+  font-size:14px;
+
+  line-height:1.7;
+
+  margin-bottom:10px;
+}
+
+.notification-content span{
+  color:#64748b;
+
+  font-size:12px;
+  font-weight:600;
+}
+
+/* ================= ACTIONS ================= */
+
+.notification-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-top:14px;
+}
+
+/* ================= READ BUTTON ================= */
+
+.read-btn{
+  border:none;
+  outline:none;
+
+  padding:10px 14px;
+
+  border-radius:12px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  color:white;
+
+  font-size:12px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.25s ease;
+}
+
+.read-btn:hover{
+  transform:translateY(-1px);
+}
+
+/* ================= DELETE BUTTON ================= */
+
+.delete-notification-btn{
+  border:none;
+  outline:none;
+
+  padding:10px 14px;
+
+  border-radius:12px;
+
+  background:#1e293b;
+
+  color:#f87171;
+
+  font-size:12px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.25s ease;
+}
+
+.delete-notification-btn:hover{
+  background:#7f1d1d;
+  color:white;
+}
+
+/* ================= EMPTY ================= */
+
+.empty-notifications{
+  min-height:260px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:30px;
+}
+
+.empty-notifications h3{
+  color:white;
+
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.empty-notifications p{
+  color:#94a3b8;
+
+  line-height:1.7;
+
+  max-width:260px;
+}
+
+.empty-bell{
+  width:90px;
+  height:90px;
+
+  border-radius:50%;
+
+  background:
+  linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:42px;
+
+  margin-bottom:20px;
+
+  box-shadow:
+  0 20px 40px rgba(99,102,241,.25);
+}
+
+/* ================= LOADING ================= */
+
+.notification-loading{
+  min-height:220px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#94a3b8;
+
+  font-weight:700;
+}
+
+/* ================= FOOTER ================= */
+
+.notification-footer{
+  padding:18px 22px;
+
+  border-top:1px solid rgba(255,255,255,.06);
+
+  background:#020617;
+}
+
+.notification-footer a{
+  width:100%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  padding:14px;
+
+  border-radius:16px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  color:white;
+
+  font-size:14px;
+  font-weight:800;
+
+  transition:.25s ease;
+}
+
+.notification-footer a:hover{
+  transform:translateY(-2px);
+}
+
+.notification-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 999998;
+}
+
+/*===== RESPONSIVE ================= */
+
+@media (max-width: 700px) {
+
+  .notification-wrapper {
+    position: static !important;
+  }
+
+  .notification-dropdown {
+    position: fixed !important;
+
+    top: 50% !important;
+    left: 50% !important;
+
+    transform: translate(-50%, -50%) !important;
+
+    width: 92vw !important;
+    max-width: 420px;
+
+    max-height: 80vh;
+margin-top:75%;
+    border-radius: 20px;
+
+    z-index: 999999;
+
+    /* CRITICAL: removes "top flash/jump" */
+    animation: none !important;
+  }
+
+  .notification-body {
+    max-height: calc(80vh - 140px);
+    overflow-y: auto;
+  }
+}

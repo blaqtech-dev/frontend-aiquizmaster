@@ -1,0 +1,94 @@
+.submit-page{
+  min-height:100vh;
+  padding:40px;
+  background:#f4f6fb;
+}
+
+.submit-card{
+  max-width:900px;
+  margin:auto;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.assignment-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.assignment-header h1{
+  margin:0;
+}
+
+.status{
+  background:#22c55e;
+  color:white;
+  padding:8px 15px;
+  border-radius:999px;
+}
+
+.assignment-info{
+  margin-top:20px;
+}
+
+.assignment-instructions{
+  margin-top:30px;
+  color:black;
+}
+
+.submission-area{
+  margin-top:30px;
+}
+
+.submission-area textarea{
+  width:100%;
+  min-height:200px;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:12px;
+}
+
+.submission-area input{
+  margin-top:15px;
+}
+
+.assignment-info{
+    color:black;
+}
+
+.submission-area button{
+  margin-top:20px;
+  padding:12px 24px;
+  border:none;
+  background:#2563eb;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.grade-box{
+  margin-top:30px;
+  background:#f8fafc;
+  padding:20px;
+  border-radius:12px;
+}
+
+.assignment-file-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #7c5cff;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.assignment-file-btn:hover {
+  background: #5a3fff;
+  transform: translateY(-2px);
+}

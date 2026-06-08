@@ -1,0 +1,198 @@
+/* ================= PAGE ================= */
+
+.my-assignments-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+}
+
+.my-assignments-page h1 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+/* ================= GRID ================= */
+
+.assignments-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(320px, 1fr)
+  );
+  gap: 24px;
+}
+
+/* ================= CARD ================= */
+
+.assignment-card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.assignment-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.12);
+}
+
+.assignment-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #4f46e5,
+    #06b6d4
+  );
+}
+
+/* ================= TITLE ================= */
+
+.assignment-card h2 {
+  color: #0f172a;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+/* ================= DETAILS ================= */
+
+.assignment-card p {
+  margin: 10px 0;
+   color:black;
+  line-height: 1.6;
+}
+
+/* ================= STATUS ================= */
+
+.status-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.status-graded {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* ================= SCORE BOX ================= */
+
+.score-box {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 14px;
+  background: #eef2ff;
+}
+
+.score-box h3 {
+  color: #4338ca;
+  margin-bottom: 5px;
+}
+
+.score-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #312e81;
+}
+
+/* ================= FEEDBACK ================= */
+
+.feedback-box {
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border-left: 4px solid #4f46e5;
+}
+
+.feedback-box h4 {
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.feedback-box p {
+  margin: 0;
+  color:black;
+}
+
+/* ================= DATE ================= */
+
+.assignment-date {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* ================= EMPTY STATE ================= */
+
+.empty-assignments {
+  text-align: center;
+  background: white;
+  padding: 60px 30px;
+  border-radius: 20px;
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.05);
+}
+
+.empty-assignments h2 {
+  color: #334155;
+  margin-bottom: 10px;
+}
+
+.empty-assignments p {
+  color: #64748b;
+}
+
+/* ================= LOADING ================= */
+
+.loading-assignments {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #64748b;
+}
+.feedback-box p{
+color:#241da8!important;
+}
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .my-assignments-page {
+    padding: 20px;
+  }
+
+  .my-assignments-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .assignment-card {
+    padding: 20px;
+  }
+
+  .score-value {
+    font-size: 1.7rem;
+  }
+}

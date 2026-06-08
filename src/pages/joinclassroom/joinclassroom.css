@@ -1,0 +1,186 @@
+.join-classroom-page{
+  min-height:100vh;
+  background:#0f172a;
+  color:white;
+  padding:40px;
+}
+
+.join-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.join-badge{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:40px;
+  background:#2563eb;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.join-header h1{
+  font-size:50px;
+  margin-bottom:15px;
+}
+
+.join-header p{
+  max-width:700px;
+  margin:auto;
+  color:#cbd5e1;
+  line-height:1.7;
+}
+
+.join-card{
+  max-width:650px;
+  margin:auto;
+  background:#111827;
+  border:1px solid #1e293b;
+  padding:35px;
+  border-radius:25px;
+}
+
+.join-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.back-link{
+  color:#60a5fa;
+  text-decoration:none;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:25px;
+}
+
+.form-group input{
+  height:55px;
+  border:none;
+  outline:none;
+  border-radius:14px;
+  padding:0 18px;
+  background:#1e293b;
+  color:white;
+  font-size:16px;
+}
+
+.join-btn{
+  width:100%;
+  height:55px;
+  border:none;
+  border-radius:14px;
+  background:#2563eb;
+  color:white;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.error-box{
+  background:#7f1d1d;
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:20px;
+}
+
+.success-box{
+  background:#14532d;
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:20px;
+}
+
+.joined-section{
+  margin-top:60px;
+}
+
+.joined-top{
+  margin-bottom:25px;
+}
+
+.joined-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.joined-card{
+  background:#111827;
+  border:1px solid #1e293b;
+  border-radius:20px;
+  padding:25px;
+}
+
+.joined-badge{
+  display:inline-block;
+  background:#1d4ed8;
+  padding:7px 15px;
+  border-radius:30px;
+  font-size:12px;
+  margin-bottom:18px;
+}
+
+.joined-card h3{
+  margin-bottom:15px;
+}
+
+.joined-card p{
+  color:#cbd5e1;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.joined-info{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:25px;
+  color:#94a3b8;
+}
+
+.open-btn{
+  width:100%;
+  height:50px;
+  border:none;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.empty-classroom{
+  text-align:center;
+  padding:70px 20px;
+  background:#111827;
+  border-radius:25px;
+}
+
+@media(max-width:768px){
+
+  .join-classroom-page{
+    padding:20px;
+  }
+
+  .join-header h1{
+    font-size:35px;
+  }
+
+  .join-card{
+    padding:25px;
+  }
+
+  .join-top{
+    flex-direction:column;
+    gap:15px;
+    align-items:flex-start;
+  }
+
+}

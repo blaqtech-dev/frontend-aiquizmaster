@@ -1,0 +1,181 @@
+/* ================= SUBJECT CARD ================= */
+
+.subject-card {
+  position: relative;
+
+  padding: 24px;
+
+  border-radius: 22px;
+
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(14px);
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3);
+
+  overflow: hidden;
+}
+
+/* ================= HOVER EFFECT ================= */
+
+.subject-card:hover {
+  transform: translateY(-8px) scale(1.02);
+
+  border-color: rgba(99, 102, 241, 0.4);
+
+  box-shadow:
+    0 20px 50px rgba(99, 102, 241, 0.15);
+}
+
+/* ================= TOP BADGE AREA ================= */
+
+.subject-top {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* ================= CATEGORY BADGE ================= */
+
+.subject-badge {
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  color: #e0e7ff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #8b5cf6
+    );
+
+  box-shadow:
+    0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+/* ================= TITLE ================= */
+
+.subject-card h2 {
+  font-size: 22px;
+  font-weight: 800;
+
+  margin-top: 6px;
+}
+
+/* ================= EXAM TEXT ================= */
+
+.subject-card p {
+  font-size: 14px;
+
+  color: #94a3b8;
+
+  margin-top: -6px;
+}
+
+/* ================= DESCRIPTION ================= */
+
+.subject-description {
+  font-size: 13px;
+  line-height: 1.6;
+
+  color: #cbd5e1;
+
+  margin-top: 6px;
+
+  min-height: 40px;
+}
+
+/* ================= BUTTON ================= */
+
+.subject-btn {
+  margin-top: 14px;
+
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  font-size: 14px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #4f46e5
+    );
+
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(99, 102, 241, 0.25);
+}
+
+/* ================= BUTTON HOVER ================= */
+
+.subject-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 35px rgba(99, 102, 241, 0.4);
+}
+
+/* ================= CARD SHINE EFFECT ================= */
+
+.subject-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: -50%;
+  left: -50%;
+
+  width: 200%;
+  height: 200%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.08),
+      transparent 60%
+    );
+
+  transform: rotate(25deg);
+
+  opacity: 0;
+
+  transition: opacity 0.4s ease;
+
+  pointer-events: none;
+}
+
+.subject-card:hover::before {
+  opacity: 1;
+}

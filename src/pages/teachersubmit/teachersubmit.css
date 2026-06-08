@@ -1,0 +1,112 @@
+/* ================= PAGE ================= */
+
+.submissions-page{
+  min-height:100vh;
+  padding:40px;
+  background:#0f172a;
+  color:white;
+}
+
+.submissions-page h1{
+  font-size:2rem;
+  margin-bottom:30px;
+  text-align:center;
+}
+
+/* ================= EMPTY ================= */
+
+.submissions-page h3{
+  text-align:center;
+  color:#cbd5e1;
+}
+
+/* ================= GRID ================= */
+
+.submission-card{
+  background:#1e293b;
+  border:1px solid #334155;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:20px;
+  transition:0.3s;
+}
+
+.submission-card:hover{
+  transform:translateY(-3px);
+  border-color:#8b5cf6;
+}
+
+/* ================= CONTENT ================= */
+
+.submission-card h3{
+  color:#f8fafc;
+  margin-bottom:12px;
+  text-align:left;
+}
+
+.submission-card p{
+  color:#cbd5e1;
+  margin:8px 0;
+  line-height:1.6;
+  word-break:break-word;
+}
+
+/* ================= FILE LINK ================= */
+
+.submission-card a{
+  display:inline-block;
+  margin-top:10px;
+  text-decoration:none;
+  color:#60a5fa;
+  font-weight:600;
+}
+
+.submission-card a:hover{
+  color:#93c5fd;
+}
+
+/* ================= GRADE BUTTON ================= */
+
+.submission-card a:last-child{
+  margin-top:15px;
+  padding:10px 18px;
+  border-radius:10px;
+  background:#8b5cf6;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.submission-card a:last-child:hover{
+  background:#7c3aed;
+}
+
+/* ================= LOADING ================= */
+
+.loading-submissions{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#0f172a;
+  color:white;
+  font-size:1.1rem;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .submissions-page{
+    padding:20px;
+  }
+
+  .submission-card{
+    padding:16px;
+  }
+
+  .submissions-page h1{
+    font-size:1.6rem;
+  }
+}
