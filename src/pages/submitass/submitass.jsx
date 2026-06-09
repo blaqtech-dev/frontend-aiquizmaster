@@ -411,6 +411,8 @@ console.log(
 
           <input
 
+            accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
+
             type="file"
 
             onChange={(e) =>

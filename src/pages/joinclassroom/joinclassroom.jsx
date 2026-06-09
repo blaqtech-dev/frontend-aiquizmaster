@@ -70,10 +70,14 @@ export function JoinClassroomPage() {
         )
       `)
 
-      .eq(
-        "student_id",
-        user.id
-      );
+     .eq("student_id", user.id)
+.order(
+  "joined_at",
+  {
+    ascending: false
+  }
+);
+      
 
     if (!error && data) {
 
@@ -171,9 +175,7 @@ export function JoinClassroomPage() {
       }
 
 
-      await supabase .from("classroom_members") 
-      .insert([ { classroom_id: classroom.id, user_id: user.id, username:
-         user.user_metadata?.username || user.email, }, ]);
+    
 
       // ================= INSERT MEMBER =================
 
@@ -194,8 +196,10 @@ export function JoinClassroomPage() {
         ]);
 
       if (joinError) {
-
-        console.log(joinError);
+console.log(
+  "JOIN ERROR:",
+  joinError
+);
 
         setErrorMessage(
           "Failed to join classroom."
@@ -211,6 +215,10 @@ export function JoinClassroomPage() {
 
         loadJoinedClassrooms();
       }
+
+      navigate(
+    `/classroom/${classroom.id}`
+  );
 
     } catch (err) {
 

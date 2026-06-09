@@ -98,10 +98,7 @@ const isPro =
           .substring(2, 8)
           .toUpperCase();
 
- const {
-  data,
-  error,
-} = await supabase
+const { data, error } = await supabase
   .from("classrooms")
   .insert([
     {
@@ -111,7 +108,9 @@ const isPro =
       class_code: finalCode,
       teacher_id: user.id,
     },
-  ]);
+  ])
+  .select()
+  .single();
 
 console.log("DATA:", data);
 console.log("ERROR:", error);
@@ -126,9 +125,7 @@ console.log("ERROR:", error);
 
       } else {
 
-        navigate(
-          "/teacher-dashboard"
-        );
+       navigate(`/classroom/${data.id}`);
       }
 
     } catch (err) {

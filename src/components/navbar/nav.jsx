@@ -29,17 +29,19 @@ import "./nav.css";
 
 export function Navbar() {
 
-  const {
-    user,
-    logout,
-  } = useAuth();
+const {
+  user,
+  profile,
+  loading,
+  logout,
+} = useAuth();
 
-  const [avatarUrl, setAvatarUrl] = useState("");
-const [username, setUsername] = useState("");
+ 
 
   const navigate =
     useNavigate();
 
+   
   const location =
     useLocation();
 
@@ -47,11 +49,20 @@ const [username, setUsername] = useState("");
     setMenuOpen] =
     useState(false);
 
-  const [role, setRole] =
-  useState(null);
 
-const [plan, setPlan] =
-  useState("free");
+
+
+
+  const role = profile?.role;
+
+const username =
+  profile?.username || "User";
+
+const avatarUrl =
+  profile?.avatar_url || "";
+
+const plan =
+  profile?.plan || "free";
 
   // ================= CLOSE MENU =================
 
@@ -60,20 +71,7 @@ const [plan, setPlan] =
     setMenuOpen(false);
   }
 
-  // ================= GET ROLE =================
 
-  useEffect(() => {
-
-    if (user) {
-
-      getRole();
-
-    } else {
-
-      setRole(null);
-    }
-
-  }, [user]);
 
   // ================= AUTO CLOSE ON ROUTE =================
 
@@ -83,70 +81,28 @@ const [plan, setPlan] =
 
   }, [location.pathname]);
 
- async function getRole() {
 
-  try {
-
-    const { data, error } =
-      await supabase
-
-        .from("profiles")
-
-        .select(`
-          role,
-          plan,
-          username,
-          avatar_url
-        `)
-
-        .eq("id", user.id)
-
-        .maybeSingle();
-
-    if (error) {
-
-      console.log(error);
-
-      return;
-    }
-
-    setRole(
-      data?.role || null
-    );
-
-    setPlan(
-      data?.plan || "free"
-    );
-
-    setUsername(
-      data?.username || "User"
-    );
-
-    setAvatarUrl(
-      data?.avatar_url || ""
-    );
-
-  } catch (error) {
-
-    console.log(error);
-  }
-}
 
   // ================= DASHBOARD =================
+function goDashboard() {
 
-  function goDashboard() {
+  closeMenu();
 
-    closeMenu();
+ if (loading && !user) return;
 
-    if (role === "teacher") {
+  navigate(
 
-      navigate("/teacher-dashboard");
+    role === "teacher"
 
-    } else {
+      ? "/teacher-dashboard"
 
-      navigate("/student-dashboard");
-    }
-  }
+      : "/student-dashboard"
+  );
+}
+
+    // ================= GET ROLE =================
+
+ 
 
   // ================= LOGOUT =================
 
@@ -171,69 +127,8 @@ const [plan, setPlan] =
   }
 
 
-  useEffect(() => {
-
-  const refreshProfile = () => {
-    if (user) {
-      getRole();
-    }
-  };
-
-  window.addEventListener(
-    "profile-updated",
-    refreshProfile
-  );
-
-  return () => {
-
-    window.removeEventListener(
-      "profile-updated",
-      refreshProfile
-    );
-  };
-
-}, [user]);
 
 
-useEffect(() => {
-
-  if (!user?.id) return;
-
-  const channel =
-    supabase
-      .channel("profile-updates")
-
-      .on(
-        "postgres_changes",
-        {
-          event: "UPDATE",
-          schema: "public",
-          table: "profiles",
-          filter: `id=eq.${user.id}`,
-        },
-
-        (payload) => {
-
-          setUsername(
-            payload.new.username
-          );
-
-          setAvatarUrl(
-            payload.new.avatar_url
-          );
-        }
-      )
-
-      .subscribe();
-
-  return () => {
-
-    supabase.removeChannel(
-      channel
-    );
-  };
-
-}, [user?.id]);
 
   return (
 
@@ -335,14 +230,20 @@ useEffect(() => {
 
               <>
 
-                <button
-                  className="nav-text-btn"
-                  onClick={goDashboard}
-                >
+               <button
+  className="nav-text-btn"
+  onClick={goDashboard}
+disabled={loading}
+>
 
-                  Dashboard
+ 
+{
+  loading
+    ? "Loading..."
+    : "Dashboard"
+}
 
-                </button>
+</button>
 
  {plan !== "pro" && (
 
@@ -423,14 +324,19 @@ useEffect(() => {
 
               <>
 
-                <button
-                  className="nav-text-btn"
-                  onClick={goDashboard}
-                >
+                 <button
+  className="nav-text-btn"
+  onClick={goDashboard}
+disabled={loading}
+>
 
-                  Dashboard
+ {
+  loading
+    ? "Loading..."
+    : "Dashboard"
+}
 
-                </button>
+</button>
 
                 <NavLink
                   to="/subjects"

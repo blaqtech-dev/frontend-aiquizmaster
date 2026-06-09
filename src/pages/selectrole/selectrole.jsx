@@ -96,10 +96,16 @@ export function SelectRolePage() {
 
      // ================= SUCCESS =================
 
-window.location.href =
+window.dispatchEvent(
+  new Event("profile-updated")
+);
+
+navigate(
   role === "teacher"
     ? "/teacher-dashboard"
-    : "/student-dashboard";
+    : "/student-dashboard",
+  { replace: true }
+);
     } catch (err) {
 
       console.log(err);

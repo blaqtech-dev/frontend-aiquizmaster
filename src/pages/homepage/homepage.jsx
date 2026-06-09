@@ -263,7 +263,12 @@ export function HomePage() {
 
                   <button
                     className="primary-btn"
-                    onClick={handleDashboard}
+                    onClick={() =>
+
+                      handleProtectedNavigation(
+                        "/subjects"
+                      )
+                    }
                   >
 
                     Continue Learning

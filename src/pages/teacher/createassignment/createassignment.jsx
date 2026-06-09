@@ -87,18 +87,16 @@ useEffect(() => {
       .channel(
         "assignments-realtime"
       )
-
-      .on(
-        "postgres_changes",
-        {
-          event: "*",
-          schema: "public",
-          table: "assignments",
-        },
-        () => {
-          getAssignments();
-        }
-      )
+.on("postgres_changes", {
+  event: "*",
+  schema: "public",
+  table: "assignments",
+}, (payload) => {
+  setAssignments(prev => {
+    const updated = [payload.new, ...prev.filter(x => x.id !== payload.new.id)];
+    return updated;
+  });
+})
 
       .subscribe();
 
@@ -194,9 +192,9 @@ useEffect(() => {
         return;
       }
 
-      setAssignments(
-        data || []
-      );
+    setAssignments(
+  [...new Map(data.map(item => [item.id, item])).values()]
+);
 
     } catch (error) {
 

@@ -33,9 +33,10 @@ function ProtectedRoute({
   }
 
   if (
-    role &&
-    profile?.role !== role
-  ) {
+  role &&
+  profile &&
+  profile.role !== role
+){
 
     return (
       <Navigate to="/" />

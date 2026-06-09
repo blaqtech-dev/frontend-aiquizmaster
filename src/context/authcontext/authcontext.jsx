@@ -5,244 +5,103 @@ import {
   useState,
 } from "react";
 
-import { supabase }
-from "../../services/supabase/supabase";
+import { supabase } from "../../services/supabase/supabase";
 
-const AuthContext =
-  createContext();
+const AuthContext = createContext();
 
-export function AuthProvider({
-  children,
-}) {
+// ================= CONTEXT PROVIDER =================
 
-  const [user, setUser] =
-    useState(null);
+export function AuthProvider({ children }) {
 
-  const [profile, setProfile] =
-    useState(null);
+  const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
+ const [authLoading, setAuthLoading] = useState(true);
+const [profileLoading, setProfileLoading] = useState(false);
 
-  const [loading, setLoading] =
-    useState(true);
+  // ================= LOAD PROFILE =================
 
-  // ================= LOAD USER =================
+async function loadProfile(userId) {
+  console.log("PROFILE STEP 1", userId);
 
-  async function loadUser() {
+  setProfileLoading(true);
 
-    try {
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("id", userId)
+    .single();
 
-      console.log(
-        "START LOADING USER"
-      );
+  setProfileLoading(false);
 
-      const {
-        data: {
-          session,
-        },
-        error,
-      } =
-        await supabase.auth.getSession();
-
-      console.log(
-        "SESSION:",
-        session
-      );
-
-      if (error) {
-
-        console.log(error);
-
-        setLoading(false);
-
-        return;
-      }
-
-      const currentUser =
-        session?.user;
-
-      // ================= NO USER =================
-
-      if (!currentUser) {
-
-        console.log(
-          "NO USER"
-        );
-
-        setUser(null);
-
-        setProfile(null);
-
-        setLoading(false);
-
-        return;
-      }
-
-      // ================= USER FOUND =================
-
-      console.log(
-        "USER FOUND"
-      );
-
-      setUser(currentUser);
-
-      // ================= PROFILE =================
-
-      try {
-
-        const {
-          data: profileData,
-          error: profileError,
-        } = await supabase
-
-          .from("profiles")
-
-          .select("*")
-
-          .eq(
-            "id",
-            currentUser.id
-          )
-
-          .maybeSingle();
-
-        console.log(
-          "PROFILE:",
-          profileData
-        );
-
-        console.log(
-          "PROFILE ERROR:",
-          profileError
-        );
-
-        // ================= CREATE PROFILE =================
-
-        if (
-          !profileData
-        ) {
-
-          console.log(
-            "CREATING PROFILE"
-          );
-
-          const {
-            data: newProfile,
-            error:
-              createError,
-          } = await supabase
-
-            .from("profiles")
-
-            .upsert({
-              id:
-                currentUser.id,
-
-              email:
-                currentUser.email,
-
-              username:
-                currentUser
-                  .user_metadata
-                  ?.username ||
-
-                currentUser.email
-                  ?.split("@")[0],
-
-             role: null,
-            })
-
-            .select()
-
-            .single();
-
-          console.log(
-            "NEW PROFILE:",
-            newProfile
-          );
-
-          console.log(
-            "CREATE ERROR:",
-            createError
-          );
-
-          setProfile(
-            newProfile
-          );
-
-        } else {
-
-          setProfile(
-            profileData
-          );
-        }
-
-      } catch (profileCatch) {
-
-        console.log(
-          "PROFILE CATCH ERROR",
-          profileCatch
-        );
-      }
-
-    } catch (err) {
-
-      console.log(
-        "MAIN ERROR",
-        err
-      );
-
-    } finally {
-
-      console.log(
-        "LOADING FALSE"
-      );
-
-      setLoading(false);
-    }
+  if (error) {
+    console.log("PROFILE ERROR:", error);
+    setProfile(null);
+    return null;
   }
 
-  // ================= EFFECT =================
+  setProfile(data);
+  return data;
+}
+
+  // ================= LOAD USER =================
+async function loadUser() {
+  console.log("START LOADING USER");
+
+  setAuthLoading(true);
+
+  try {
+    const { data, error } = await supabase.auth.getSession();
+
+    if (error) {
+      setUser(null);
+      setProfile(null);
+      return;
+    }
+
+    const currentUser = data?.session?.user || null;
+
+    setUser(currentUser);
+
+    if (!currentUser) {
+      setProfile(null);
+      return;
+    }
+
+    await loadProfile(currentUser.id);
+
+  } finally {
+    setAuthLoading(false);
+  }
+}
+
+  // ================= INIT EFFECT =================
 
   useEffect(() => {
 
     loadUser();
 
-    const {
-      data: listener,
-    } =
-      supabase.auth.onAuthStateChange(
+    const { data: listener } =
 
-        async (
-          event,
-          session
-        ) => {
+  supabase.auth.onAuthStateChange((event, session) => {
+  console.log("AUTH EVENT:", event);
 
-          console.log(
-            "AUTH EVENT:",
-            event
-          );
+  const currentUser = session?.user || null;
 
-          const currentUser =
-            session?.user || null;
+  setUser(currentUser);
 
-          setUser(
-            currentUser
-          );
+  if (!currentUser) {
+    setProfile(null);
+    return;
+  }
 
-          if (!currentUser) {
-
-            setProfile(null);
-
-            setLoading(false);
-
-            return;
-          }
-
-          setLoading(false);
-        }
-      );
+  if (event === "SIGNED_IN") {
+   setTimeout(() => {
+  loadProfile(currentUser.id);
+}, 0);
+  }
+});
 
     return () => {
-
       listener.subscription.unsubscribe();
     };
 
@@ -255,40 +114,31 @@ export function AuthProvider({
     await supabase.auth.signOut();
 
     setUser(null);
-
     setProfile(null);
 
-    window.location.href =
-      "/login";
+    window.location.href = "/login";
   }
 
-  return (
+  // ================= PROVIDER =================
 
+  return (
     <AuthContext.Provider
       value={{
-
         user,
-
         profile,
-
-        loading,
-
+    loading: authLoading,
+profileLoading,
         logout,
-
-        isAuthenticated:
-          !!user,
+        isAuthenticated: !!user,
       }}
     >
-
       {children}
-
     </AuthContext.Provider>
   );
 }
 
-export function useAuth() {
+// ================= HOOK =================
 
-  return useContext(
-    AuthContext
-  );
+export function useAuth() {
+  return useContext(AuthContext);
 }

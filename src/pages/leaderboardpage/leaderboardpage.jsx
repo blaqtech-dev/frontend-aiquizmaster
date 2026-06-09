@@ -334,7 +334,7 @@ function Leaderboard() {
 
             <h2>
               {
-                topPlayer?.username.slice(0,10) ||
+                topPlayer?.username.slice(0,5) ||
                 "-"
               }
             </h2>
@@ -447,7 +447,7 @@ function Leaderboard() {
                 <div className="top-avatar">
 
                   {
-                    player.username
+                    player.username.slice(0,5) 
                       ?.charAt(0)
                       .toUpperCase()
                   }
@@ -456,7 +456,7 @@ function Leaderboard() {
 
                 <h2>
 
-                  {player.username}
+                  {player.username.slice(0,5) }
 
                 </h2>
 
@@ -515,7 +515,7 @@ function Leaderboard() {
                   <div className="leaderboard-avatar">
 
                     {
-                      player.username
+                      player.username.slice(0,5) 
                         ?.charAt(0)
                         .toUpperCase()
                     }
@@ -526,7 +526,7 @@ function Leaderboard() {
 
                     <h2>
 
-                      {player.username}
+                      {player.username.slice(0,5) }
 
                     </h2>
 
