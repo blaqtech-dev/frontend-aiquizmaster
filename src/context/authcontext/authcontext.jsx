@@ -18,6 +18,7 @@ export function AuthProvider({ children }) {
  const [authLoading, setAuthLoading] = useState(true);
 const [profileLoading, setProfileLoading] = useState(false);
 
+
   // ================= LOAD PROFILE =================
 
 async function loadProfile(userId) {
@@ -25,13 +26,13 @@ async function loadProfile(userId) {
 
   setProfileLoading(true);
 
-  const { data, error } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", userId)
-    .single();
+const { data, error } = await supabase
+  .from("profiles")
+  .select("*")
+  .eq("id", userId)
+  .maybeSingle();
 
-  setProfileLoading(false);
+setProfileLoading(false);
 
   if (error) {
     console.log("PROFILE ERROR:", error);
@@ -69,6 +70,9 @@ async function loadUser() {
 
     await loadProfile(currentUser.id);
 
+  } catch (err) {
+    console.log("LOAD USER ERROR:", err);
+
   } finally {
     setAuthLoading(false);
   }
@@ -76,36 +80,77 @@ async function loadUser() {
 
   // ================= INIT EFFECT =================
 
-  useEffect(() => {
+useEffect(() => {
 
-    loadUser();
+  loadUser();
 
-    const { data: listener } =
+  const handleProfileUpdate = async () => {
 
-  supabase.auth.onAuthStateChange((event, session) => {
-  console.log("AUTH EVENT:", event);
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  const currentUser = session?.user || null;
+  if (session?.user) {
 
-  setUser(currentUser);
-
-  if (!currentUser) {
-    setProfile(null);
-    return;
+    await loadProfile(
+      session.user.id
+    );
   }
+};
 
-  if (event === "SIGNED_IN") {
-   setTimeout(() => {
-  loadProfile(currentUser.id);
-}, 0);
-  }
-});
+window.addEventListener(
+  "profile-updated",
+  handleProfileUpdate
+);
 
-    return () => {
-      listener.subscription.unsubscribe();
-    };
+  const { data: listener } =
+    supabase.auth.onAuthStateChange(
+      async (event, session) => {
 
-  }, []);
+        console.log(
+          "AUTH EVENT:",
+          event
+        );
+
+        const currentUser =
+          session?.user || null;
+
+        setUser(currentUser);
+
+        if (!currentUser) {
+
+          setProfile(null);
+
+          return;
+        }
+
+        // wait a little after sign in
+        if (
+          event === "SIGNED_IN" ||
+          event === "INITIAL_SESSION"
+        ) {
+
+          setTimeout(async () => {
+
+            await loadProfile(
+              currentUser.id
+            );
+
+          }, 500);
+        }
+      }
+    );
+return () => {
+
+  listener.subscription.unsubscribe();
+
+  window.removeEventListener(
+    "profile-updated",
+    handleProfileUpdate
+  );
+};
+
+}, []);
 
   // ================= LOGOUT =================
 

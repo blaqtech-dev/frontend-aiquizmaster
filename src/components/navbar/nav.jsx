@@ -225,8 +225,9 @@ function goDashboard() {
 
           {/* ================= STUDENT ================= */}
 
-          {
-            role === "student" && (
+         {
+  !loading &&
+  role === "student" && (
 
               <>
 
@@ -319,8 +320,9 @@ disabled={loading}
 
           {/* ================= TEACHER ================= */}
 
-          {
-            role === "teacher" && (
+         {
+  !loading &&
+  role === "teacher" && (
 
               <>
 
