@@ -1,6 +1,7 @@
 import {
   Routes,
   Route,
+  useLocation,
 } from "react-router-dom";
 
 import { Navbar }
@@ -93,13 +94,35 @@ import ClassroomSubmissionsPage from "./pages/classroomsubmit/classroomsubmit.js
 import InstallApp from "./components/installapp/installapp.jsx";
 import GradeSubmissionsPage from "./pages/gradesubmit/gradesubmit.jsx";
 import { ResetPasswordPage } from "./pages/resetpass/resetpass.jsx";
+import { AdminDashboard } from "./pages/admin/admindashboard/admindashboard.jsx";
+import { AdminPaymentsPage } from "./pages/admin/paymentdashboard/adminpayment.jsx";
+import { AdminUsersPage } from "./pages/admin/adminuser/adminuser.jsx";
+import { AdminAnalyticsPage } from "./pages/admin/adminanalytics/adminanalytics.jsx";
+import { AdminClassroomsPage } from "./pages/admin/adminclassroom/adminclassroom.jsx";
+import { AdminQuizManagement } from "./pages/admin/adminquizmanagement/adminquizmanagement.jsx";
+import { AdminNotificationsPage } from "./pages/admin/adminnotification/adminnotication.jsx";
+import { AdminAiMonitorPage } from "./pages/admin/adminaimonitor/adminaimonitor.jsx";
+import { AdminSettingsPage } from "./pages/admin/adminsettings/adminsettings.jsx";
+import { AdminReportsPage } from "./pages/admin/adminreport/adminreport.jsx";
+import { AdminLayout } from "./components/adminlayout/adminlayout.jsx";
+
+
 function App() {
+
+
+   const location =
+   useLocation();
+
+  const isAdmin =
+    location.pathname.includes(
+      "/admin"
+    );
 
   return (
 
     <>
 
-      <Navbar />
+         {!isAdmin && <Navbar />}
 <InstallApp/>
       <Routes>
 
@@ -146,6 +169,81 @@ function App() {
   }
 />
 
+
+{/*admin area start */}
+<Route
+  element={
+    <ProtectedRoute role="admin">
+      <AdminLayout />
+    </ProtectedRoute>
+  }
+>
+
+  <Route
+  path="/admin-dashboard"
+element={<AdminDashboard/>}
+/>
+
+
+<Route
+  path="/admin-users"
+  element={<AdminUsersPage />}
+/>
+
+
+
+<Route
+  path="/admin-payments"
+  element={<AdminPaymentsPage />}
+/>
+
+
+<Route
+  path="/admin-analytics"
+  element={<AdminAnalyticsPage />}
+/>
+
+
+<Route
+  path="/admin-classrooms"
+  element={<AdminClassroomsPage />}
+/>
+
+
+<Route
+  path="/admin-quizzes"
+  element={<AdminQuizManagement />}
+/>
+
+
+<Route
+  path="/admin-notifications"
+  element={<AdminNotificationsPage /> }
+/>
+
+<Route
+  path="/admin-report"
+  element={<AdminReportsPage />}
+/>
+
+<Route
+  path="/admin-settings"
+  element={< AdminSettingsPage/>}
+/>
+
+<Route
+  path="/admin-ai-monitor"
+  element={<AdminAiMonitorPage />}
+/>
+
+
+</Route>
+{/*admin area end */}
+
+
+
+
+
 <Route
   path="/reset-password"
   element={
@@ -162,6 +260,10 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+
+
+
 
 
 <Route

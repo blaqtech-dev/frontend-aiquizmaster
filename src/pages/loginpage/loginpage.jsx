@@ -107,12 +107,23 @@ if (!role) {
   return;
 }
 
-if (role === "teacher") {
-  navigate("/teacher-dashboard", { replace: true });
+if (role === "admin") {
+  navigate("/admin-dashboard", {
+    replace: true,
+  });
   return;
 }
 
-navigate("/student-dashboard", { replace: true });
+if (role === "teacher") {
+  navigate("/teacher-dashboard", {
+    replace: true,
+  });
+  return;
+}
+
+navigate("/student-dashboard", {
+  replace: true,
+});
     }
 
     setLoading(false);

@@ -9,10 +9,16 @@ export function UpgradePage() {
 
     const API = import.meta.env.VITE_API_URL;
 
+    console.log(API);
+
 
  const { user } = useAuth();
 
+const [processing, setProcessing] =
+  useState(false);
 
+  const [processingPayment, setProcessingPayment] =
+  useState(false);
 
  
 
@@ -50,38 +56,86 @@ export function UpgradePage() {
 
 
 
+  async function refreshPlan() {
+
+  const { data } =
+    await supabase
+      .from("profiles")
+      .select("plan")
+      .eq("id", user.id)
+      .single();
+
+  if (data) {
+
+    setPlan(
+      data.plan || "free"
+    );
+  }
+}
+
+
 async function onSuccess(reference) {
+
   if (!reference || !user?.id) {
-    console.error("Missing reference or user");
     return;
   }
 
   try {
-    const response = await fetch(`${API}/api/verify-payment`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        reference,
-        userId: user.id,
-      }),
-    });
 
-    const data = await response.json();
+    setProcessingPayment(true);
 
-    if (response.ok && data.success) {
-      alert("Welcome to Pro 🎉");
-      window.location.reload();
-    } else {
-      alert(`Payment failed: ${data.message}`);
+    const response =
+      await fetch(
+        `${API}/api/verify-payment`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
+          body: JSON.stringify({
+            reference,
+            userId: user.id,
+          }),
+        }
+      );
+
+    const data =
+      await response.json();
+
+   if (
+  response.ok &&
+  data.success
+) {
+
+  await refreshPlan();
+
+  alert(
+    "Welcome to Pro 🎉"
+  );
+
+} else {
+
+      alert(
+        data.message ||
+        "Verification failed"
+      );
     }
 
   } catch (error) {
+
     console.log(error);
+
+    alert(
+      "Payment successful but verification failed. Please wait a few seconds and refresh."
+    );
+
+  } finally {
+
+    setProcessingPayment(false);
+
   }
 }
-
   function handleUpgrade() {
 
     alert(
@@ -91,6 +145,10 @@ async function onSuccess(reference) {
 
 
 function handlePaystackPayment() {
+
+
+  if (processingPayment) return;
+  
   if (!user?.email) {
     alert("User not loaded");
     return;
@@ -113,6 +171,9 @@ function handlePaystackPayment() {
 
   handler.openIframe();
 }
+
+
+
 
   return (
 
@@ -211,7 +272,7 @@ function handlePaystackPayment() {
 
             <h1>₦2,000</h1>
 
-            <span>Per Month</span>
+            <span>one time payment</span>
 
          <ul>
 
@@ -265,11 +326,35 @@ function handlePaystackPayment() {
 
 </ul>
 
-      <button
+{
+  processingPayment && (
+
+    <div
+      className="payment-loading"
+    >
+
+      Verifying payment...
+      Please wait.
+
+    </div>
+  )
+}
+<button
   className="upgrade-pay-btn"
   onClick={handlePaystackPayment}
+  disabled={
+    plan === "pro" ||
+    processingPayment
+  }
 >
-  Upgrade Now
+{
+  processingPayment
+    ? "Activating Pro..."
+    : plan === "pro"
+    ? "Pro Activated"
+    : "Upgrade Now"
+}
+
 </button>
 
           </div>

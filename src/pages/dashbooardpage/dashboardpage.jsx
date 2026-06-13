@@ -607,7 +607,7 @@ setPlan(
             </span>
 
             <span>
-              {pdfCount}/15
+              {pdfCount}/3
             </span>
 
           </div>
@@ -618,7 +618,7 @@ setPlan(
               className="usage-fill pdf"
               style={{
                 width: `${
-                  (pdfCount / 15) * 100
+                  (pdfCount / 3) * 100
                 }%`,
               }}
             />

@@ -20,6 +20,11 @@ import { useLocation,useNavigate } from "react-router-dom";
 
 import "./aitutor.css";
 
+import {
+  getUsage,
+  incrementUsage,
+}
+from "../../services/usage/usageservice.js";
 export function AiTutorPage() {
 
     const API = import.meta.env.VITE_API_URL;
@@ -98,16 +103,20 @@ const [isSpeaking, setIsSpeaking] = useState(false);
 
 
 useEffect(() => {
-  if (!user?.id) return;
 
-  const savedCount =
-    Number(
-      localStorage.getItem(
-        `questionCount-${user.id}`
-      )
-    ) || 0;
+  async function loadUsage() {
 
-  setQuestionCount(savedCount);
+    if (!user?.id) return;
+
+    const usage =
+      await getUsage(user.id);
+
+    setQuestionCount(
+      usage?.question_count || 0
+    );
+  }
+
+  loadUsage();
 
 }, [user]);
   // ================= SAVE CURRENT PDF =================
@@ -157,7 +166,7 @@ useEffect(() => {
 
   // ================= SAVE MEMORY =================
 
- // ================= SAVE PDF CHAT MEMORY =================
+ // ================= SAVE PDF CHAT MEMORY ===============
 
 useEffect(() => {
 
@@ -402,22 +411,16 @@ navigate("/upgrade");
         content: aiText,
       };
 
+if (!isPro) {
 
-    if (!isPro) {
+  await incrementUsage(
+    user.id,
+    "question_count"
+  );
 
-  setQuestionCount(prev => {
-
-    const newCount =
-      prev + 1;
-
-    localStorage.setItem(
-      `questionCount-${user.id}`,
-      newCount
-    );
-
-    return newCount;
-
-  });
+  setQuestionCount(prev =>
+    prev + 1
+  );
 
 }
 

@@ -94,7 +94,20 @@ export function SelectRolePage() {
 
       // ================= SUCCESS =================
 
-     // ================= SUCCESS =================
+      // ================= CREATE COUNTS RECORD =================
+
+await supabase
+
+  .from("counts")
+
+  .upsert({
+    user_id: user.id,
+    pdf_count: 0,
+    question_count: 0,
+    image_count: 0,
+  });
+
+
 
 window.dispatchEvent(
   new Event("profile-updated")
@@ -106,7 +119,6 @@ navigate(
     : "/student-dashboard",
   { replace: true }
 );
-
 
     } catch (err) {
 

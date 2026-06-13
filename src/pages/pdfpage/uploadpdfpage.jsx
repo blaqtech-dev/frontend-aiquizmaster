@@ -6,6 +6,8 @@ import "./upload.css";
 
 import { useNavigate } from "react-router-dom";
 
+import { getUsage,incrementUsage } from "../../services/usage/usageservice.js";
+
 
 export function PdfUploadPage() {
 
@@ -68,23 +70,26 @@ const navigate = useNavigate();
 
 
 
-    const PDF_LIMIT = 15;
+    const PDF_LIMIT = 3;
 
 const [pdfCount, setPdfCount] =
   useState(0);
 
 useEffect(() => {
 
-  if (!user?.id) return;
+  async function loadUsage() {
 
-  const savedCount =
-    Number(
-      localStorage.getItem(
-        `pdfCount-${user.id}`
-      )
-    ) || 0;
+    if (!user?.id) return;
 
-  setPdfCount(savedCount);
+    const usage =
+      await getUsage(user.id);
+
+    setPdfCount(
+      usage?.pdf_count || 0
+    );
+  }
+
+  loadUsage();
 
 }, [user]);
 
@@ -321,24 +326,17 @@ method: "POST",
   setQuizId(
     quizData?.id
   );
+if (!isPro) {
 
-  if (!isPro) {
+  await incrementUsage(
+    user.id,
+    "pdf_count"
+  );
 
-    setPdfCount(prev => {
-
-      const newCount =
-        prev + 1;
-
-      localStorage.setItem(
-        `pdfCount-${user.id}`,
-        newCount
-      );
-
-      return newCount;
-
-    });
-
-  }
+  setPdfCount(prev =>
+    prev + 1
+  );
+}
 
 }
 
@@ -609,6 +607,7 @@ method: "POST",
 
               <span>
                 AI is processing your PDF...
+              kindly wait, 4 mins max to generate
               </span>
 
             </div>

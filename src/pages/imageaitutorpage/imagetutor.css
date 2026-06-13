@@ -258,6 +258,12 @@
   border-radius:20px;
 }
 
+.image-message p{
+  color:white;
+}
+.preview-wrapper p{
+  color:white !important;
+}
 /* ================= ANIMATION ================= */
 
 @keyframes fadeIn{

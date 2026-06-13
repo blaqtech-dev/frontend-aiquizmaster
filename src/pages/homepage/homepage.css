@@ -1488,6 +1488,13 @@
   rgba(124,92,255,.5);
 }
 
+.ai-left h1{
+  color:black;
+}
+
+.ai-left p{
+  color:#5a3fff;
+}
 /* ================= SHINE EFFECT ================= */
 
 .featured-plan::before{

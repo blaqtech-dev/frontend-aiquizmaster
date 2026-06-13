@@ -258,6 +258,10 @@ transition: all 0.7s ease;
   background: #dc2626;
 }
 
+.message p{
+  color:white;
+}
+
 /* ================= MOBILE FIX ================= */
 
 @media (max-width: 768px) {

@@ -566,6 +566,13 @@
 
 }
 
+.summary-box p{
+  color:white;
+}
+.flash-card p{
+  color:rgb(224, 220, 220);
+}
+
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 900px) {

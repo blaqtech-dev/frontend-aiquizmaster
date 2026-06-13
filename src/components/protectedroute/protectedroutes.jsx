@@ -43,6 +43,16 @@ function ProtectedRoute({
     );
   }
 
+  if (
+  profile?.status ===
+  "suspended"
+) {
+
+  return (
+    <Navigate to="/" />
+  );
+}
+
   // ================= PRO CHECK =================
 
   if (

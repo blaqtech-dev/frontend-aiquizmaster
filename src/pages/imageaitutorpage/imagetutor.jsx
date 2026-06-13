@@ -17,7 +17,11 @@ import {
 from "../../context/authcontext/authcontext";
 import { useNavigate } from "react-router-dom";
 import "./imagetutor.css";
-
+import {
+  getUsage,
+  incrementUsage,
+}
+from "../../services/usage/usageservice.js";
 export function ImageAiTutorPage() {
 
 const API = import.meta.env.VITE_API_URL;
@@ -78,16 +82,19 @@ const isPro =
 
 useEffect(() => {
 
-  if (!user?.id) return;
+  async function loadUsage() {
 
-  const savedCount =
-    Number(
-      localStorage.getItem(
-        `imageCount-${user.id}`
-      )
-    ) || 0;
+    if (!user?.id) return;
 
-  setImageCount(savedCount);
+    const usage =
+      await getUsage(user.id);
+
+    setImageCount(
+      usage?.image_count || 0
+    );
+  }
+
+  loadUsage();
 
 }, [user]);
   // ================= AUTO SCROLL =================
@@ -188,26 +195,16 @@ navigate("/upgrade");
         "No response";
 
 
-    if (!isPro) {
+   if (!isPro) {
 
-  setImageCount(prev => {
-
-    const newCount =
-      prev + 1;
-
-        console.log(
-    "Updating question count:",
-    newCount
+  await incrementUsage(
+    user.id,
+    "image_count"
   );
 
-    localStorage.setItem(
-      `imageCount-${user.id}`,
-      newCount
-    );
-
-    return newCount;
-
-  });
+  setImageCount(prev =>
+    prev + 1
+  );
 
 }
 
@@ -436,9 +433,10 @@ navigate("/upgrade");
             Upload or Snap
             Image
           </span>
+          
 
         </label>
-
+ <span>1 min max  to generate</span>
         {/* ================= PREVIEW ================= */}
 
         {preview && (
@@ -466,7 +464,9 @@ navigate("/upgrade");
       0,
       FREE_IMAGE_LIMIT - imageCount
     )}
+     
   </p>
+
 )}
         {/* ================= CHAT BOX ================= */}
 

@@ -693,6 +693,10 @@
   transform:translateY(-2px);
   background:#6748ff;
 }
+
+.analytics-card h3{
+  color:white;
+}
 /* ================= MOBILE ================= */
 
 

@@ -535,6 +535,10 @@
   font-weight: 800;
 }
 
+.analytics-card h2{
+  color:white;
+}
+
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 1000px) {

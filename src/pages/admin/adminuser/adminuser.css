@@ -1,0 +1,134 @@
+.admin-users-page{
+padding:30px;
+max-width:1400px;
+margin:auto;
+}
+
+.admin-users-header{
+margin-bottom:30px;
+}
+
+.admin-users-badge{
+background:#4f46e5;
+color:white;
+padding:8px 15px;
+border-radius:999px;
+font-size:.8rem;
+font-weight:700;
+}
+.admin-users-header h1{
+    color:black;
+
+}
+
+.admin-search-box{
+margin-bottom:25px;
+}
+
+.admin-search-box input{
+width:100%;
+padding:15px;
+border:1px solid #ddd;
+border-radius:12px;
+font-size:1rem;
+}
+
+.admin-users-stats{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:25px;
+}
+
+.mini-card{
+background:white;
+padding:20px;
+border-radius:16px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.mini-card h2{
+font-size:2rem;
+margin-bottom:10px;
+}
+
+.table-wrapper{
+overflow-x:auto;
+background:white;
+padding:20px;
+border-radius:18px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,
+td{
+padding:15px;
+text-align:left;
+border-bottom:1px solid #eee;
+}
+
+select{
+padding:8px;
+border-radius:8px;
+}
+
+.delete-btn{
+background:#ef4444;
+color:white;
+border:none;
+padding:10px 14px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.admin-users-loading{
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.admin-users-loader{
+width:50px;
+height:50px;
+border:4px solid #ddd;
+border-top:4px solid #4f46e5;
+border-radius:50%;
+animation:spin .8s linear infinite;
+}
+
+.mini-card h2,p {
+    color:#4f46e5;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+.suspend-btn {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.suspend-btn:hover {
+  opacity: 0.9;
+}
+
+.protected-admin {
+  color: #10b981;
+  font-weight: 700;
+}
