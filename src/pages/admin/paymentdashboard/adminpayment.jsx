@@ -79,6 +79,11 @@ export function AdminPaymentsPage() {
           }
         );
 
+        console.log(
+  "PAYMENTS FROM DB:",
+  data
+);
+
       if (error) throw error;
 
       setPayments(
