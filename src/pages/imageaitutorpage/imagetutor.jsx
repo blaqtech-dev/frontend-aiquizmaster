@@ -415,15 +415,12 @@ navigate("/upgrade");
 
         <label className="upload-box">
 
-          <input
-            type="file"
-            accept="image/*"
-            capture="environment"
-            hidden
-            onChange={
-              handleImage
-            }
-          />
+         <input
+  type="file"
+  accept="image/*"
+  hidden
+  onChange={handleImage}
+/>
 
           <ImageIcon
             size={45}

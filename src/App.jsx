@@ -105,6 +105,7 @@ import { AdminAiMonitorPage } from "./pages/admin/adminaimonitor/adminaimonitor.
 import { AdminSettingsPage } from "./pages/admin/adminsettings/adminsettings.jsx";
 import { AdminReportsPage } from "./pages/admin/adminreport/adminreport.jsx";
 import { AdminLayout } from "./components/adminlayout/adminlayout.jsx";
+import { ImageScanPage } from "./pages/imagescan/imagescan.jsx";
 
 
 function App() {
@@ -157,6 +158,13 @@ function App() {
         <Route path='assignment'
         element={<MyAssignmentsPage/>}
         />
+
+<Route
+ path="/scan-notes"
+ element={<ImageScanPage />}
+/>
+
+
 <Route
   path="/global-feed"
   element={<GlobalChatPage />}

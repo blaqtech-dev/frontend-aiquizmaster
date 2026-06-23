@@ -410,8 +410,139 @@ setAverageGrade(avg);
 
 
 
+<Link
+  to="/global-feed"
+  className="teacher-action-card"
+>
+
+  <div className="teacher-action-icon">
+    📢
+  </div>
+
+  <h3>
+    Announcements
+  </h3>
+
+  <p>
+    Send updates to students
+  </p>
+
+</Link>
+
+  <Link
+            to="/upload"
+            className="teacher-action-card"
+          >
+
+            <div className="teacher-action-icon">
+              📄
+            </div>
+
+            <h3>
+              Upload PDF
+            </h3>
+
+            <p>
+              Generate AI quizzes
+            </p>
+
+          </Link>
 
 
+          <Link
+  to="/scan-notes"
+  className="teacher-action-card"
+>
+
+  <div className="teacher-action-icon">
+    🤖
+  </div>
+
+  <h3>
+    AI Image Notes
+  </h3>
+
+  <p>
+    Scan, summarize & chat
+  </p>
+
+</Link>
+
+
+
+          <Link
+  to="/profile"
+  className="teacher-action-card"
+>
+  <div className="teacher-action-icon">
+    👤
+  </div>
+
+  <h3>
+    Profile
+  </h3>
+
+  <p>
+    Manage your account
+  </p>
+</Link>
+
+
+
+<Link
+  to="/multiplayer"
+  className="teacher-action-card"
+>
+  <div className="teacher-action-icon">
+    🎮
+  </div>
+
+  <h3>
+    Multiplayer
+  </h3>
+
+  <p>
+    Challenge friends live
+  </p>
+</Link>
+
+<Link
+  to="/leaderboard"
+  className="teacher-action-card"
+>
+  <div className="teacher-action-icon">
+    🏆
+  </div>
+
+  <h3>
+    Leaderboard
+  </h3>
+
+  <p>
+    View top rankings
+  </p>
+</Link>
+
+
+<Link
+  to="/subjects"
+  className="teacher-action-card"
+>
+  <div className="teacher-action-icon">
+    📚
+  </div>
+
+  <h3>
+    Subjects
+  </h3>
+
+  <p>
+    Browse all subjects
+  </p>
+</Link>
+
+
+  
 
           <Link
             to="/create-assignment"
@@ -495,24 +626,6 @@ setAverageGrade(avg);
 </Link>
 
 
-<Link
-  to="/global-feed"
-  className="teacher-action-card"
->
-
-  <div className="teacher-action-icon">
-    📢
-  </div>
-
-  <h3>
-    Announcements
-  </h3>
-
-  <p>
-    Send updates to students
-  </p>
-
-</Link>
 
 
 <div className="teacher-stat-card">
@@ -535,24 +648,7 @@ setAverageGrade(avg);
 
 </div>
 
-          <Link
-            to="/upload"
-            className="teacher-action-card"
-          >
-
-            <div className="teacher-action-icon">
-              📄
-            </div>
-
-            <h3>
-              Upload PDF
-            </h3>
-
-            <p>
-              Generate AI quizzes
-            </p>
-
-          </Link>
+        
 
         </div>
 

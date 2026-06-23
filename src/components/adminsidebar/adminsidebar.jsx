@@ -104,6 +104,17 @@ to="/admin-quizzes"
     
 
     <NavLink
+to="/admin-notifications"
+  onClick={() =>
+    setSidebarOpen(false)
+  }
+  
+>
+  <Brain size={18}/>
+      notification
+</NavLink>
+
+    <NavLink
 to="/admin-ai-monitor"
   onClick={() =>
     setSidebarOpen(false)

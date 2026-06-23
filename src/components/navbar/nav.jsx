@@ -272,27 +272,18 @@ disabled={loading}
 
                 </NavLink>
 
-              
-              
-
-                <NavLink
-                  to="/multiplayer"
+              <NavLink
+                  to="/scan-notes"
                   className={navLinkClass}
                 >
 
-                  Multiplayer
+                Ai_image_notes
 
                 </NavLink>
+              
 
-                
-                 <NavLink
-                  to="/profile"
-                  className={navLinkClass}
-                >
+              
 
-                Profile
-
-                </NavLink>
 
                  <NavLink
                   to="/quizstorage"
@@ -303,14 +294,7 @@ disabled={loading}
 
                 </NavLink>
 
-                <NavLink
-                  to="/leaderboard"
-                  className={navLinkClass}
-                >
-
-                  Leaderboard
-
-                </NavLink>
+               
 
               
 
@@ -340,14 +324,7 @@ disabled={loading}
 
 </button>
 
-                <NavLink
-                  to="/subjects"
-                  className={navLinkClass}
-                >
-
-                  Subjects
-
-                </NavLink>
+               
 
                 <NavLink
                   to="/global-feed"
@@ -355,6 +332,16 @@ disabled={loading}
                 >
 
                   Feed
+
+                </NavLink>
+
+                
+              <NavLink
+                  to="/scan-notes"
+                  className={navLinkClass}
+                >
+
+                Ai_image_notes
 
                 </NavLink>
 
@@ -368,35 +355,7 @@ disabled={loading}
                 </NavLink>
 
 
-                 <NavLink
-                  to="/profile"
-                  className={navLinkClass}
-                >
-
-                Profile
-
-                </NavLink>
-
-          
- <NavLink
-                  to="/multiplayer"
-                  className={navLinkClass}
-                >
-
-                  Multiplayer
-
-                </NavLink>
-
-                <NavLink
-                  to="/leaderboard"
-                  className={navLinkClass}
-                >
-
-                  Leaderboard
-
-                </NavLink>
-
-                 {plan !== "pro" && (
+                {plan !== "pro" && (
 
     <NavLink
       to="/upgrade"

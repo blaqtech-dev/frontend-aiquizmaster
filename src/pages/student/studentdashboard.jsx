@@ -446,6 +446,43 @@ setGradedCount(
 
           </Link>
 
+
+         <Link
+  to="/profile"
+className="student-action-card"
+>
+  <div  className="student-action-icon">
+    👤
+  </div>
+
+  <h3>
+    Profile
+  </h3>
+
+  <p>
+    Manage your account
+  </p>
+</Link>
+
+<Link
+  to="/multiplayer"
+className="student-action-card"
+>
+  <div className="student-action-icon">
+    🎮
+  </div>
+
+  <h3>
+    Multiplayer
+  </h3>
+
+  <p>
+    Challenge friends live
+  </p>
+</Link>
+
+
+
           <Link
             to="/upload"
             className="student-action-card"
@@ -489,6 +526,25 @@ setGradedCount(
 <h3>Image Tutor</h3>
 <p>Analyze notes and homework</p>
 
+
+</Link>
+
+      <Link
+  to="/scan-notes"
+className="student-action-card"
+>
+
+  <div className="student-action-icon">
+    🤖
+  </div>
+
+  <h3>
+    AI Image Notes
+  </h3>
+
+  <p>
+    Scan, summarize & chat
+  </p>
 
 </Link>
 
