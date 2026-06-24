@@ -284,8 +284,8 @@ navigate("/upgrade");
     try {
 
       const response =
-        await fetch(
-          "http://localhost:5000/api/image-chat",
+  await fetch(
+    `${API}/api/image-chat`,
           {
 
             method: "POST",
